@@ -1,10 +1,8 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
-  // Might use a resource here that returns a JSON array
+.service('Todos', function Todos() {
 
-  // Some fake testing data
-  var chats = [{
+  this.data = [{
     id: 0,
     name: 'Ben Sparrow',
     lastText: 'You on your way?',
@@ -19,32 +17,25 @@ angular.module('starter.services', [])
     name: 'Adam Bradleyson',
     lastText: 'I should buy a boat',
     face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
   }];
 
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
+  // METODOS
+  this.all = function all() {
+    return this.data
+  }
+
+  this.remove = function remove(todo) {
+    this.data.splice(this.data.indexOf(todo), 1);
+  }
+
+  this.get = function get(id) {
+    var todo = []
+    this.data.map(function(el) {
+      if (el.id == id) {
+        todo = el
       }
-      return null;
-    }
-  };
-});
+    })
+    return todo
+  }
+
+})
