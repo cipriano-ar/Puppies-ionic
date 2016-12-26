@@ -4,30 +4,27 @@ angular.module('starter.services', [])
 
   this.data = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
+    desc: 'Comprar leche',
+    completado: false,
   }, {
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
+    desc: 'Trapear cocina',
+    completado: false,
   }, {
     id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
+    desc: 'Reparar bici',
+    completado: false,
   }];
 
-  // METODOS
+  // ALL
   this.all = function all() {
     return this.data
   }
-
+  // REMOVE
   this.remove = function remove(todo) {
     this.data.splice(this.data.indexOf(todo), 1);
   }
-
+  // GET
   this.get = function get(id) {
     var todo = []
     this.data.map(function(el) {
